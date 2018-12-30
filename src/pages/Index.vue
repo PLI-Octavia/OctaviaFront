@@ -15,7 +15,7 @@ export default {
   name: 'PageIndex',
   methods: {
     async click () {
-      await this.$store.dispatch(actionTypes.FETCH_USERS)
+      await this.$store.dispatch(actionTypes.LOGIN_USER)
     }
   }
 }
