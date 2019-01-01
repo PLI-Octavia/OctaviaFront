@@ -4,6 +4,7 @@ const routes = [
     component: () => import('layouts/MyLayout.vue'),
     children: [
       {
+        name: 'Home',
         path: '',
         component: () => import('pages/Index.vue'),
         meta: {
@@ -13,12 +14,20 @@ const routes = [
     ]
   },
   {
-    path: '/connect',
-    component: () => import('layouts/MyLayout.vue'),
+    path: '/auth',
+    component: () => import('layouts/AuthLayout.vue'),
     children: [
       {
+        name: 'Register',
+        path: '/register',
+        component: () => import('pages/Login.vue'),
+        meta: {
+          requireAuth: false
+        }
+      },
+      {
         name: 'Login',
-        path: '',
+        path: '/login',
         component: () => import('pages/Login.vue'),
         meta: {
           requireAuth: false
