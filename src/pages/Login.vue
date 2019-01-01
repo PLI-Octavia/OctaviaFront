@@ -22,7 +22,6 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
-// import mutationTypes from '../store/mutationTypes'
 import actionTypes from '../store/actionTypes'
 
 export default {
@@ -47,7 +46,6 @@ export default {
         this.$q.notify({ message: 'Veuillez saisir votre mail et votre mot de passe' })
         return
       }
-      // Todo comprendre et faire marcher vuelidate
       await this.$store.dispatch(actionTypes.LOGIN_USER, this.loginForm)
     }
   }
