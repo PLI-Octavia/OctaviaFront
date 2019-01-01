@@ -35,8 +35,8 @@ const actions = {
     store.commit(mutationTypes.SET_USERS, response.data.data)
   },
   async [actionTypes.LOGIN_USER] (store, user) {
-    const response = await $http.post('/login', null, { params: { email: user.email, password: user.password } })
-    if (response.data.success) {
+    try {
+      const response = await $http.post('/login', null, { params: { email: user.email, password: user.password } })
       const token = 'Bearer ' + response.data.success.token
       // On ajoute le token dans le header axios
       Axios.defaults.headers.common['Authorization'] = token
@@ -44,7 +44,7 @@ const actions = {
       const details = await $http.post('/details')
       store.commit(mutationTypes.SET_AUTHUSER, {token: token, user: details.data.success})
       this.$router.push({name: 'Home'})
-    } else {
+    } catch (e) {
       Notify.create({
         message: 'Mauvais mail ou mot de passe'
       })

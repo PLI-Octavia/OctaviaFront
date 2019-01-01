@@ -38,10 +38,15 @@ export default {
     loginForm: {
       email: { required, email },
       password: required
-    }
+    },
+    validationRegisterGroup: ['loginForm.email', 'loginForm.password']
   },
   methods: {
     async submit () {
+      if (this.$v.validationRegisterGroup.$error || this.$v.validationRegisterGroup.$invalid) {
+        this.$q.notify({ message: 'Veuillez saisir votre mail et votre mot de passe' })
+        return
+      }
       // Todo comprendre et faire marcher vuelidate
       await this.$store.dispatch(actionTypes.LOGIN_USER, this.loginForm)
     }
