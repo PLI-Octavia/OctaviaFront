@@ -16,6 +16,8 @@
       </q-field>
 
       <q-btn color="primary" @click="submit">Submit</q-btn>
+      <br>
+      Vous n'avez pas encore de compte<a :class="$style.link" @click="$router.push('/register')"> crée  </a>en un
     </div>
   </div>
 </template>
@@ -63,4 +65,7 @@ export default {
     position relative
     left 80%
     top 15%
+  .link
+    color blue
+    cursor pointer
 </style>

@@ -38,6 +38,8 @@
         :disabled="$v.validationRegisterGroup.$invalid">
         Submit
       </q-btn>
+      <br>
+      Vous avez déjà un compte<a :class="$style.link" @click="$router.push('/login')"> connectez vous  </a>
     </div>
   </div>
 </template>
@@ -94,4 +96,8 @@ export default {
     position relative
     left 80%
     top 15%
+  .link
+    color blue
+    cursor pointer
+
 </style>
