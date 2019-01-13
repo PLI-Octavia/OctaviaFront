@@ -1,10 +1,29 @@
 <template>
   <div :class="$style.container">
-    je suis sur l'index
+    <div :class="$style.form">
+      <q-field>
+        <q-input
+          v-model="loginForm.email"
+          placeholder="Email"
+        />
+      </q-field>
+      <q-field>
+        <q-input
+          v-model="loginForm.password"
+          placeholder="Password"
+          type="password"
+        />
+      </q-field>
+
+      <q-btn color="primary" @click="submit">Submit</q-btn>
+      <br>
+      Vous n'avez pas encore de compte<a :class="$style.link" @click="$router.push('/register')"> crée  </a>en un
+    </div>
   </div>
 </template>
 
 <script>
+import { required, email } from 'vuelidate/lib/validators'
 import actionTypes from '../store/actionTypes'
 
 export default {
@@ -15,6 +34,13 @@ export default {
         password: ''
       }
     }
+  },
+  validations: {
+    loginForm: {
+      email: { required, email },
+      password: required
+    },
+    validationRegisterGroup: ['loginForm.email', 'loginForm.password']
   },
   methods: {
     async submit () {
