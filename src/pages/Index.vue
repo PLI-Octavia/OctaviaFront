@@ -1,22 +1,45 @@
 <template>
-  <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
-    <q-btn label="New item" @click.prevent='click'/>
-  </q-page>
+  <div :class="$style.container">
+    je suis sur l'index
+  </div>
 </template>
 
-<style>
-</style>
-
 <script>
-import actionTypes from 'src/store/actionTypes'
+import actionTypes from '../store/actionTypes'
 
 export default {
-  name: 'PageIndex',
+  data () {
+    return {
+      loginForm: {
+        email: '',
+        password: ''
+      }
+    }
+  },
   methods: {
-    async click () {
-      await this.$store.dispatch(actionTypes.LOGIN_USER)
+    async submit () {
+      if (this.$v.validationRegisterGroup.$error || this.$v.validationRegisterGroup.$invalid) {
+        this.$q.notify({ message: 'Veuillez saisir votre mail et votre mot de passe' })
+        return
+      }
+      await this.$store.dispatch(actionTypes.LOGIN_USER, this.loginForm)
     }
   }
 }
 </script>
+
+<style lang="stylus" module>
+  .container
+    width 100%
+    height 100%
+  .form
+    width 300px
+    height 300px
+    background-color white
+    position relative
+    left 80%
+    top 15%
+  .link
+    color blue
+    cursor pointer
+</style>

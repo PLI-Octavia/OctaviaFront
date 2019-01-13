@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-import routes from './routes'
 import $store from '../store/index'
+import routes from './routes'
 
 Vue.use(VueRouter)
 
@@ -23,14 +22,17 @@ export default function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE
   })
 
+  const openRoutes = ['Login', 'Register']
+
   Router.beforeEach((to, from, next) => {
-    to.matched.some((record) => {
-      if (record.meta.requireAuth && !$store.getters.isLogged) {
-        next({ name: 'Login' })
-      } else {
-        next()
-      }
-    })
+    if (openRoutes.includes(to.name)) {
+      next()
+    } else if ($store.getters.isLogged) {
+      next()
+    } else {
+      next('/login')
+    }
   })
+
   return Router
 }

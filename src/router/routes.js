@@ -1,15 +1,13 @@
 const routes = [
   {
+    name: 'Dashboard',
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
       {
+        path: '/dashboard',
         name: 'Home',
-        path: '',
-        component: () => import('pages/Index.vue'),
-        meta: {
-          requireAuth: true
-        }
+        component: () => import('pages/Index.vue')
       }
     ]
   },
@@ -18,20 +16,14 @@ const routes = [
     component: () => import('layouts/AuthLayout.vue'),
     children: [
       {
-        name: 'Register',
         path: '/register',
-        component: () => import('pages/Register.vue'),
-        meta: {
-          requireAuth: false
-        }
+        name: 'Register',
+        component: () => import('pages/Register.vue')
       },
       {
-        name: 'Login',
         path: '/login',
-        component: () => import('pages/Login.vue'),
-        meta: {
-          requireAuth: false
-        }
+        name: 'Login',
+        component: () => import('pages/Login.vue')
       }
     ]
   }

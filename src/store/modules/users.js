@@ -11,7 +11,7 @@ const state = {
 
 const getters = {
   isLogged: (state) => {
-    return state.isAuth
+    return state.isLogged
   }
 }
 
@@ -28,7 +28,8 @@ const actions = {
     Axios.defaults.headers.common['Authorization'] = token
     const details = await $http.post('/details')
     // On récupe toutes les infos de ce user
-    store.commit(mutationTypes.SET_AUTHUSER, {token: token, user: details.data.success})
+    await store.commit(mutationTypes.SET_AUTHUSER, {token: token, user: details.data.success})
+    this.$router.push({ path: '/dashboard' })
   },
   async [actionTypes.LOGIN_USER] (store, user) {
     try {
