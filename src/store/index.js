@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { Cookies } from 'quasar'
 
 import users from './modules/users'
 Vue.use(Vuex)
@@ -12,6 +13,12 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules: {
     users
+  },
+  mounted () {
+    console.log('yeahhhh')
+    if (Cookies.get('isAuth') === undefined) {
+      console.log('not log')
+    }
   }
 })
 export default store

@@ -1,7 +1,7 @@
 import Axios, * as $http from 'axios'
 import mutationTypes from '../mutationTypes'
 import actionTypes from '../actionTypes'
-import { Notify } from 'quasar'
+import { Notify, Cookies } from 'quasar'
 // import Vue from 'vue'
 
 const state = {
@@ -29,6 +29,9 @@ const actions = {
     const details = await $http.post('/details')
     // On récupe toutes les infos de ce user
     await store.commit(mutationTypes.SET_AUTHUSER, {token: token, user: details.data.success})
+    Cookies.set('isLogged', token, {
+      expires: 1
+    })
     this.$router.push({ path: '/dashboard' })
   },
   async [actionTypes.LOGIN_USER] (store, user) {
