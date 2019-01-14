@@ -12,6 +12,12 @@ const state = {
 const getters = {
   isLogged: (state) => {
     return state.isLogged
+  },
+  currentUser: (state, rootState) => {
+    if (!state.isLogged) {
+      return null
+    }
+    return state.auth_user
   }
 }
 
