@@ -8,7 +8,7 @@
 <script>
 import { openURL } from 'quasar'
 import toolbar from '../components/Toolbar.vue'
-import menuLeft from '../components/MenuLeft.vue'
+import menuLeft from '../components/Menu/MenuLeft.vue'
 
 export default {
   name: 'MyLayout',
