@@ -14,7 +14,11 @@ import MenuProfil from './MenuProfil.vue'
 import RouteLinker from './RouteLinker.vue'
 
 export default {
-  name: 'MenuLeft',
+  data () {
+    return {
+      drawer: true
+    }
+  },
   components: {
     MenuProfil,
     RouteLinker

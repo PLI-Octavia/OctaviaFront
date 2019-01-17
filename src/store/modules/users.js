@@ -26,6 +26,12 @@ const mutations = {
     user.token = token
     state.auth_user = user
     state.isLogged = true
+  },
+  [mutationTypes.LOGOUT_USER] (state) {
+    state.auth_user = null
+    state.isLogged = false
+    Cookies.remove('isLogged')
+    this.$router.push({ path: '/login' })
   }
 }
 
@@ -61,6 +67,9 @@ const actions = {
     } catch (e) {
       console.log(e)
     }
+  },
+  [actionTypes.LOGOUT_USER] (store) {
+    store.commit(mutationTypes.LOGOUT_USER)
   }
 }
 
