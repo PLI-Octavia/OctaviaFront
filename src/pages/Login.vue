@@ -3,7 +3,7 @@
     <div class="flex justify-center full-height">
       <div class="card text-white text-center width-3of4 bg-width-2of5 gt-bg-width-1of4 sm-auto " id="login">
       <div class="card-content bg-white ">
-        <div class="stacked-label">
+        <div>
           <q-input
             class="full-width"
             type="email"
@@ -11,12 +11,12 @@
             placeholder="Email"
           />
         </div>
-        <div class="stacked-label">
+        <div>
           <q-input
             class="full-width"
             type="password"
             v-model="loginForm.password"
-            placeholder="Password"
+            placeholder="Mot de passe"
           />
         </div>
         <div class="card-actions inline-block vertical-middle">
@@ -26,17 +26,12 @@
             full-widht
             @click="submit"
           >
-          Submit
+          Se connecter
           </q-btn>
-          <br>
-          <p :class="$style.black">
-            Vous n'avez pas encore de compte
-            <a :class="$style.link" @click="$router.push('/register')"> crée
-            </a>
-            en un
-          </p>
         </div>
       </div>
+      <br>
+        <a :class="$style.link" @click="$router.push('/register')"> Créer un compte </a>
       </div>
     </div>
   </div>
@@ -75,22 +70,17 @@ export default {
 </script>
 
 <style lang="stylus" module>
+  @import '~variables'
   .container
     width 100%
     height 100%
-  .form
-    width 300px
-    height 300px
-    background-color white
-    position relative
-    left 80%
-    top 15%
   .link
-    color blue
+    color $primary
     cursor pointer
   .black
     color black
 </style>
+
 <style lang="stylus">
   .card
     margin-bottom 0px
@@ -101,6 +91,7 @@ export default {
     margin-top 20px
   #login
     margin-top 10%
+    min-width 500px
   button
     margin-bottom 4%
   h4
