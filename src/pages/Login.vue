@@ -28,10 +28,9 @@
           >
           Se connecter
           </q-btn>
+          <a id="createBtn" :class="$style.link" @click="$router.push('/register')"> Créer un compte </a>
         </div>
       </div>
-      <br>
-        <a :class="$style.link" @click="$router.push('/register')"> Créer un compte </a>
       </div>
     </div>
   </div>
@@ -92,6 +91,10 @@ export default {
   #login
     margin-top 10%
     min-width 500px
+  #createBtn
+    position relative
+    top 53px
+    left 156px
   button
     margin-bottom 4%
   h4
