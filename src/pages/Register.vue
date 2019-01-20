@@ -1,45 +1,58 @@
 <template>
   <div :class="$style.container">
-    <div :class="$style.form">
-      <q-field>
-        <q-input
-          v-model="registerForm.name"
-          placeholder="Nom Complet"
-        />
-      </q-field>
-      <q-field>
-        <q-input
-          v-model="registerForm.email"
-          placeholder="Email"
-        />
-      </q-field>
-      <q-field>
-        <q-input
-          v-model="registerForm.password"
-          placeholder="Password"
-          type="password"
-        />
-      </q-field>
-      <q-field>
-        <q-input
-          v-model="registerForm.c_password"
-          placeholder="Confirmation Password"
-          type="password"
-        />
-      </q-field>
-      <q-field>
-        <q-radio v-model="registerForm.role" val="1" label="Je suis un parent" />
-        <q-radio v-model="registerForm.role" val="2" label="Je suis un professeur" />
-      </q-field>
+    <div class="flex justify-center full-height">
+      <div :class="$style.form">
+        <div class="card text-white text-center width-3of4 bg-width-2of5 gt-bg-width-1of4 sm-auto " id="login">
+          <div class="card-content bg-white ">
+            <q-field>
+              <q-input
+                v-model="registerForm.name"
+                placeholder="Nom Complet"
+              />
+            </q-field>
+            <q-field>
+              <q-input
+                v-model="registerForm.email"
+                placeholder="Email"
+              />
+            </q-field>
+            <q-field>
+              <q-input
+                v-model="registerForm.password"
+                placeholder="Password"
+                type="password"
+              />
+            </q-field>
+            <q-field>
+              <q-input
+                v-model="registerForm.c_password"
+                placeholder="Confirmation Password"
+                type="password"
+              />
+            </q-field>
+            <q-field>
+              <q-radio color="black" v-model="registerForm.role" val="1" label="Je suis un parent" />
+              <q-radio color="black" v-model="registerForm.role" val="2" label="Je suis un professeur" />
+            </q-field>
 
-      <q-btn
-        color="primary"
-        @click="submit"
-        :disabled="$v.validationRegisterGroup.$invalid">
-        Submit
-      </q-btn>
-      <br>
-      Vous avez déjà un compte<a :class="$style.link" @click="$router.push('/login')"> connectez vous  </a>
+            <q-btn
+              class="submit"
+              color="primary"
+              size="lg"
+              @click="submit"
+              :disabled="$v.validationRegisterGroup.$invalid">
+              Submit
+            </q-btn>
+            <br>
+            <p id="connect">
+              Vous avez déjà un compte
+              <a :class="$style.link" @click="$router.push('/login')">
+              connectez vous
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -90,14 +103,34 @@ export default {
     width 100%
     height 100%
   .form
-    width 300px
-    height 300px
-    background-color white
-    position relative
-    left 80%
-    top 15%
   .link
     color blue
     cursor pointer
 
+</style>
+<style lang="stylus">
+  .card
+    margin-bottom 0px
+  .card-content
+    min-height 160px
+    padding 60px
+  .card-actions
+    margin-top 20px
+  .q-option-label
+    color black
+  .submit
+    margin-top 5%
+  #login
+    margin-top 10%
+    min-width 500px
+  #connect
+    position relative
+    top: 62px;
+    left: 82px;
+  button
+    margin-bottom 4%
+  h4
+    font-weight 300
+  p
+    color black
 </style>
