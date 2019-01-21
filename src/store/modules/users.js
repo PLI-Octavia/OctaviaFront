@@ -24,6 +24,9 @@ const getters = {
 const mutations = {
   [mutationTypes.SET_AUTHUSER] (state, {token, user}) {
     user.token = token
+    if (user.avatar_source === null) {
+      user.avatar_source = 'https://avatars2.githubusercontent.com/u/6086592?s=460&v=4'
+    }
     state.auth_user = user
     state.isLogged = true
   },
