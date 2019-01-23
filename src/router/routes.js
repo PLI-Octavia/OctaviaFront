@@ -7,7 +7,7 @@ const routes = [
       {
         path: '/dashboard',
         name: 'Home',
-        component: () => import('pages/Index.vue')
+        component: () => import('pages/Catalogue.vue')
       }
     ]
   },

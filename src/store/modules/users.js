@@ -47,6 +47,7 @@ const actions = {
     Cookies.set('isLogged', token, {
       expires: 1
     })
+    await store.dispatch(actionTypes.FETCH_GAMES)
     this.$router.push({ path: '/dashboard' })
   },
   async [actionTypes.LOGIN_USER] (store, user) {
