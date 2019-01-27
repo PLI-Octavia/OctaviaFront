@@ -1,22 +1,30 @@
 <template>
   <div>
-    <div id="profile">
-        <img :src="currentUser.avatar_source" style='height: 80px' class="inline-block">
-        <!--img src="../img/avatar-1.svg" id="avatar" class="inline-block"-->
-        <div id="user-name">
-          <span class="text-white"> {{ currentUser.name }} </span>
-        </div>
-        <q-btn
-          :class="$style.logout"
-          round
-          flat
-          dense
-          size="sm"
-          icon="logout"
-          color="white"
-          @click.prevent="logout"
-        />
-      </div>
+    <q-list highlight>
+      <q-item>
+        <q-item-side>
+          <q-item-tile>
+            <img
+            :class="$style.avatar_img"
+            :src="currentUser.avatar_source"
+            >
+          </q-item-tile>
+        </q-item-side>
+        <q-item-main :label="currentUser.name"/>
+        <q-item-side right>
+          <q-btn
+              :class="$style.logout"
+              round
+              flat
+              dense
+              size="sm"
+              icon="logout"
+              color="black"
+              @click.prevent="logout"
+            />
+        </q-item-side>
+      </q-item>
+    </q-list>
   </div>
 </template>
 
@@ -37,10 +45,10 @@ export default {
 }
 </script>
 <style lang="stylus" module>
-.logout
-  position absolute
-  right 0px
-  top 50px
+.avatar_img
+    width 80px
+    height 80px
+    border-radius 50%
 </style>
 
 <style lang="stylus">

@@ -12,7 +12,7 @@ import actionTypes from './store/actionTypes'
 
 export default {
   name: 'App',
-  async mounted () {
+  async beforeCreate () {
     axios.defaults.baseURL = $config.baseURL
     axios.defaults.responseType = 'json'
     axios.defaults.headers.common['Cache-Control'] = 'no-cache'
@@ -20,6 +20,8 @@ export default {
     if (Cookies.has('isLogged')) {
       await this.$store.dispatch(actionTypes.FETCH_USER, Cookies.get('isLogged'))
     }
+  },
+  async mounted () {
   }
 }
 </script>

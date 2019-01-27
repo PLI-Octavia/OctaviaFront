@@ -5,27 +5,31 @@ import actionTypes from '../actionTypes'
 // import Vue from 'vue'
 
 const state = {
-  games: {},
-  nextPageUrl: ''
+  games: []
 }
 
 const getters = {
   getGames: (state) => {
     return state.games
+  },
+  getGamesFilterByTopic: (state) => (filter) => {
+    if (filter === 0) {
+      return state.games
+    } else {
+      return state.games.filter(game => game.topic.id_topic === filter)
+    }
   }
 }
 
 const mutations = {
   async [mutationTypes.SET_GAMES] (state, games) {
-    state.games = games.data
-    state.nextPageUrl = games.next_page_url
+    state.games = games
   }
 }
 const actions = {
   async [actionTypes.FETCH_GAMES] (store, token) {
     const details = await $http.get('/games')
-    console.log(details.data.data)
-    await store.commit(mutationTypes.SET_GAMES, details.data)
+    await store.commit(mutationTypes.SET_GAMES, details.data.success)
   }
 }
 

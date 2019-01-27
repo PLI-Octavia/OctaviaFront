@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import users from './modules/users'
 import game from './modules/game'
+import topic from './modules/topic'
 Vue.use(Vuex)
 
 /*
@@ -13,7 +14,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules: {
     users,
-    game
+    game,
+    topic
   }
 })
 export default store
