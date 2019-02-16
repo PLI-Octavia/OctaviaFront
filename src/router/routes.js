@@ -8,6 +8,11 @@ const routes = [
         path: '/dashboard',
         name: 'Home',
         component: () => import('pages/Catalogue.vue')
+      },
+      {
+        path: '/user/edit',
+        name: 'Edit',
+        component: () => import('pages/UserEdit.vue')
       }
     ]
   },

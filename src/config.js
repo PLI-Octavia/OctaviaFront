@@ -1,5 +1,5 @@
 const config = {
-  baseURL: 'https://octavia.local.heffiros.net/api'
+  baseURL: 'https://octavia.maltuin/api'
 }
 
 export default config
