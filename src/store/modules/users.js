@@ -13,11 +13,24 @@ const getters = {
   isLogged: (state) => {
     return state.isLogged
   },
-  currentUser: (state, rootState) => {
+  currentUser: (state) => {
     if (!state.isLogged) {
       return null
     }
     return state.auth_user
+  },
+  getchildren: (state, getters) => {
+    if (!state.isLogged) {
+      return null
+    }
+
+    const currentUser = getters.currentUser
+
+    if (currentUser.child.length < 0) {
+      return null
+    } else {
+      return currentUser.child
+    }
   }
 }
 

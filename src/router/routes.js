@@ -8,6 +8,11 @@ const routes = [
         path: '/dashboard',
         name: 'Home',
         component: () => import('pages/Catalogue.vue')
+      },
+      {
+        path: '/child',
+        name: 'child',
+        component: () => import('pages/Child.vue')
       }
     ]
   },
