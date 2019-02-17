@@ -5,7 +5,9 @@ import { Notify, Cookies } from 'quasar'
 // import Vue from 'vue'
 
 const state = {
-  auth_user: {},
+  auth_user: {
+    child: {}
+  },
   isLogged: false
 }
 
@@ -42,6 +44,9 @@ const mutations = {
     }
     state.auth_user = user
     state.isLogged = true
+  },
+  [mutationTypes.SET_CHILD] (state, child) {
+    state.auth_user.child.push(child)
   },
   [mutationTypes.LOGOUT_USER] (state) {
     state.auth_user = null
@@ -85,6 +90,22 @@ const actions = {
       await store.dispatch(actionTypes.FETCH_USER, token)
     } catch (e) {
       console.log(e)
+    }
+  },
+  async [actionTypes.USER_ADDCHILD] (store, child) {
+    try {
+      const response = await $http.post('/child', child)
+      await store.commit(mutationTypes.SET_CHILD, response.data.success)
+      debugger
+      Notify.create({
+        type: 'positive',
+        message: 'Vous avez ajouté votre enfant à votre compte'
+      })
+    } catch (e) {
+      Notify.create({
+        type: 'negative',
+        message: 'Une erreur est survenu'
+      })
     }
   },
   [actionTypes.LOGOUT_USER] (store) {

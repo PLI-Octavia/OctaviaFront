@@ -3,18 +3,33 @@
     <div class="card-content bg-white ">
       <q-field>
         <q-input
-          v-model="registerForm.name"
-          placeholder="Nom Complet"
+          v-model="childForm.firstname"
+          placeholder="Prénom"
         />
       </q-field>
 
+      <q-field>
+        <q-input
+          v-model="childForm.lastname"
+          placeholder="Nom"
+        />
+      </q-field>
+
+       <q-field>
+      <div>
+        <q-select
+          v-model="childForm.schoolclass_id"
+          inverted
+          :options="getSchoolClass"
+        />
+      </div>
+      </q-field>
       <q-btn
         class="submit"
         color="primary"
-        size="lg"
         @click="submit"
         @enter="submit"
-        :disabled="$v.validationRegisterGroup.$invalid">
+        >
         Submit
       </q-btn>
     </div>
@@ -22,41 +37,32 @@
 </template>
 
 <script>
-import { required, email } from 'vuelidate/lib/validators'
 import actionTypes from '../../store/actionTypes'
-// Todo comprendre pkoi le bouton s'allume alors que toutes les conditions ne sont pas remplies.
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'AddChild',
   data () {
     return {
-      registerForm: {
-        email: '',
-        password: null,
-        c_password: null,
-        role: '1',
-        name: null
-      }
+      childForm: {
+        firstname: null,
+        lastname: null,
+        schoolclass_id: 0
+      },
+      select: 0,
+      name: null
     }
   },
-  validations: {
-    registerForm: {
-      email: { required, email },
-      password: required,
-      c_password: required,
-      name: required
-    },
-    validationRegisterGroup: ['registerForm.name', 'registerForm.email', 'registerForm.password', 'registerForm.c_password']
+  computed: {
+    ...mapGetters(['getSchoolClass'])
   },
   methods: {
     async submit () {
-      if (this.$v.validationRegisterGroup.$error || this.$v.validationRegisterGroup.$invalid) {
-        this.$q.notify({ message: 'Veuillez remplir tous les champs' })
-        return
-      }
-      if (this.registerForm.password === this.registerForm.c_password) {
-        await this.$store.dispatch(actionTypes.REGISTER_USER, this.registerForm)
+      console.log(this.childForm)
+      if (this.childForm.schoolclass_id !== 0) {
+        await this.$store.dispatch(actionTypes.USER_ADDCHILD, this.childForm)
       } else {
-        this.$q.notify({ message: 'Vos mot de passe ne sont pas identiques' })
+        this.$q.notify({ message: 'Veuillez renseigner la classe actuelle de votre enfant' })
       }
     }
   }
