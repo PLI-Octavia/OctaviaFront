@@ -6,5 +6,7 @@ export default {
   // Game
   SET_GAMES: 'GAME/SET_GAMES',
   // Topics
-  SET_TOPICS: 'GAME/SET_TOPICS'
+  SET_TOPICS: 'GAME/SET_TOPICS',
+  // Class
+  SET_SCHOOLCLASS: 'SCHOOLCLASS/SET_SCHOOLCLASS'
 }

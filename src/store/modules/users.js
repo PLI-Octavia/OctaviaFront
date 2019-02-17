@@ -62,6 +62,7 @@ const actions = {
     })
     await store.dispatch(actionTypes.FETCH_GAMES)
     await store.dispatch(actionTypes.FETCH_TOPICS)
+    await store.dispatch(actionTypes.FETCH_SCHOOLCLASS)
     this.$router.push({ path: '/dashboard' })
   },
   async [actionTypes.LOGIN_USER] (store, user) {
