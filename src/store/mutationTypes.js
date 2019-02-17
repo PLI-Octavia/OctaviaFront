@@ -5,6 +5,7 @@ export default {
   LOGOUT_USER: 'USERS/LOGOUT_USER',
   // Game
   SET_GAMES: 'GAME/SET_GAMES',
+  GET_GAME_DETAIL: 'GAME/GET_DETAIL',
   // Topics
   SET_TOPICS: 'GAME/SET_TOPICS'
 }

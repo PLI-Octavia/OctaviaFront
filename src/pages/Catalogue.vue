@@ -12,7 +12,8 @@
   <div>
     <q-card v-for="game in this.games" :key="game.id" :class="$style.card" inline class="q-ma-sm">
       <q-card-media overlay-position="top">
-        <img :src="'http://www.facetheforce.today/random/200?r=' + game.id">
+        <img :src="'http://www.facetheforce.today/random/200?r=' + game.id"
+        @click="gameDetail(game.id)">
 
         <q-card-title slot="overlay">
           {{ game.name }}
@@ -59,6 +60,9 @@ export default {
   methods: {
     async getFilterGame () {
       this.games = this.$store.getters.getGamesFilterByTopic(this.select)
+    },
+    gameDetail (gameId) {
+      this.$router.push({ path: '/game/detail/' + gameId })
     }
   }
 }
