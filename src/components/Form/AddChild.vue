@@ -7,16 +7,13 @@
           placeholder="Nom Complet"
         />
       </q-field>
-      <q-field>
-        <q-radio color="black" v-model="registerForm.role" val="1" label="Je suis un parent" />
-        <q-radio color="black" v-model="registerForm.role" val="2" label="Je suis un professeur" />
-      </q-field>
 
       <q-btn
         class="submit"
         color="primary"
         size="lg"
         @click="submit"
+        @enter="submit"
         :disabled="$v.validationRegisterGroup.$invalid">
         Submit
       </q-btn>
