@@ -10,6 +10,11 @@ const routes = [
         component: () => import('pages/Catalogue.vue')
       },
       {
+        path: '/game/detail/:gameid',
+        name: 'GameDetail',
+        component: () => import('pages/GameDetail.vue')
+      },
+      {
         path: '/user/edit',
         name: 'Edit',
         component: () => import('pages/UserEdit.vue')
