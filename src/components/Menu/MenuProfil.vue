@@ -18,6 +18,18 @@
               flat
               dense
               size="sm"
+              icon="edit"
+              color="black"
+              @click.prevent="edit"
+            />
+        </q-item-side>
+        <q-item-side right>
+          <q-btn
+              :class="$style.logout"
+              round
+              flat
+              dense
+              size="sm"
               icon="logout"
               color="black"
               @click.prevent="logout"
@@ -40,6 +52,9 @@ export default {
   methods: {
     async logout () {
       await this.$store.dispatch(actionTypes.LOGOUT_USER)
+    },
+    async edit () {
+      this.$router.push({ path: '/user/edit' })
     }
   }
 }

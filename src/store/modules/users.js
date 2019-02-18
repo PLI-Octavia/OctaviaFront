@@ -17,7 +17,7 @@ const getters = {
     if (!state.isLogged) {
       return null
     }
-    return state.auth_user
+    return {...state.auth_user}
   }
 }
 
@@ -75,6 +75,15 @@ const actions = {
   },
   [actionTypes.LOGOUT_USER] (store) {
     store.commit(mutationTypes.LOGOUT_USER)
+  },
+  async [actionTypes.EDIT_USER] (store, user) {
+    try {
+      debugger
+      await $http.post('/user/' + user.id, user)
+      await store.commit(mutationTypes.SET_AUTHUSER, {token: user.token, user: user})
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
