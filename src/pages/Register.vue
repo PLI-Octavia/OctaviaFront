@@ -6,8 +6,14 @@
           <div class="card-content bg-white ">
             <q-field>
               <q-input
-                v-model="registerForm.name"
-                placeholder="Nom Complet"
+                v-model="registerForm.firstname"
+                placeholder="Prénom"
+              />
+            </q-field>
+            <q-field>
+              <q-input
+                v-model="registerForm.lastname"
+                placeholder="Nom"
               />
             </q-field>
             <q-field>
@@ -69,7 +75,8 @@ export default {
         password: null,
         c_password: null,
         role: '1',
-        name: null
+        firstname: null,
+        lastname: null
       }
     }
   },
@@ -78,9 +85,10 @@ export default {
       email: { required, email },
       password: required,
       c_password: required,
-      name: required
+      firstname: required,
+      lastname: required
     },
-    validationRegisterGroup: ['registerForm.name', 'registerForm.email', 'registerForm.password', 'registerForm.c_password']
+    validationRegisterGroup: ['registerForm.firstname', 'registerForm.lastname', 'registerForm.email', 'registerForm.password', 'registerForm.c_password']
   },
   methods: {
     async submit () {

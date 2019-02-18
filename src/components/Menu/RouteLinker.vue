@@ -1,9 +1,8 @@
 <template>
   <div>
-    <q-item to="/showcase/layout-demo/play-with-layout">
+    <q-item to="/child">
         <q-item-side icon="account circle" />
-        <q-item-main label="Play with Layout" sublabel="Learn more about it" />
-        <q-item-side right icon="thumb_up" />
+        <q-item-main label="Mes enfants" sublabel="Gérer le compte de mes enfants" />
       </q-item>
       <q-item to="/showcase/layout-demo/drawer-panels">
         <q-item-side icon="view_array" />

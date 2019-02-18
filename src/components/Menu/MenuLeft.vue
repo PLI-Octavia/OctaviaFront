@@ -1,5 +1,4 @@
 <template>
-
   <q-layout-drawer
       side="left"
       v-model="drawer"

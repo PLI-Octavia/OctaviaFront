@@ -13,6 +13,16 @@ const routes = [
         path: '/game/detail/:gameid',
         name: 'GameDetail',
         component: () => import('pages/GameDetail.vue')
+      },
+      {
+        path: '/user/edit',
+        name: 'Edit',
+        component: () => import('pages/UserEdit.vue')
+      },
+      {
+        path: '/child',
+        name: 'child',
+        component: () => import('pages/Child.vue')
       }
     ]
   },
