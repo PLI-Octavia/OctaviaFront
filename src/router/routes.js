@@ -13,6 +13,11 @@ const routes = [
         path: '/user/edit',
         name: 'Edit',
         component: () => import('pages/UserEdit.vue')
+      },
+      {
+        path: '/child',
+        name: 'child',
+        component: () => import('pages/Child.vue')
       }
     ]
   },

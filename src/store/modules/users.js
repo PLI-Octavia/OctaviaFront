@@ -5,7 +5,9 @@ import { Notify, Cookies } from 'quasar'
 // import Vue from 'vue'
 
 const state = {
-  auth_user: {},
+  auth_user: {
+    child: {}
+  },
   isLogged: false
 }
 
@@ -13,11 +15,24 @@ const getters = {
   isLogged: (state) => {
     return state.isLogged
   },
-  currentUser: (state, rootState) => {
+  currentUser: (state) => {
     if (!state.isLogged) {
       return null
     }
     return {...state.auth_user}
+  },
+  getchildren: (state, getters) => {
+    if (!state.isLogged) {
+      return null
+    }
+
+    const currentUser = getters.currentUser
+
+    if (currentUser.child.length < 0) {
+      return null
+    } else {
+      return currentUser.child
+    }
   }
 }
 
@@ -29,6 +44,9 @@ const mutations = {
     }
     state.auth_user = user
     state.isLogged = true
+  },
+  [mutationTypes.SET_CHILD] (state, child) {
+    state.auth_user.child.push(child)
   },
   [mutationTypes.LOGOUT_USER] (state) {
     state.auth_user = null
@@ -49,6 +67,7 @@ const actions = {
     })
     await store.dispatch(actionTypes.FETCH_GAMES)
     await store.dispatch(actionTypes.FETCH_TOPICS)
+    await store.dispatch(actionTypes.FETCH_SCHOOLCLASS)
     this.$router.push({ path: '/dashboard' })
   },
   async [actionTypes.LOGIN_USER] (store, user) {
@@ -73,12 +92,26 @@ const actions = {
       console.log(e)
     }
   },
+  async [actionTypes.USER_ADDCHILD] (store, child) {
+    try {
+      const response = await $http.post('/child', child)
+      await store.commit(mutationTypes.SET_CHILD, response.data.success)
+      Notify.create({
+        type: 'positive',
+        message: 'Vous avez ajouté votre enfant à votre compte'
+      })
+    } catch (e) {
+      Notify.create({
+        type: 'negative',
+        message: 'Une erreur est survenu'
+      })
+    }
+  },
   [actionTypes.LOGOUT_USER] (store) {
     store.commit(mutationTypes.LOGOUT_USER)
   },
   async [actionTypes.EDIT_USER] (store, user) {
     try {
-      debugger
       await $http.post('/user/' + user.id, user)
       await store.commit(mutationTypes.SET_AUTHUSER, {token: user.token, user: user})
     } catch (e) {

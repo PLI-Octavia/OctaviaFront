@@ -10,7 +10,7 @@
             >
           </q-item-tile>
         </q-item-side>
-        <q-item-main :label="currentUser.name"/>
+        <q-item-main :label="currentUser.firstname + ' ' + currentUser.lastname"/>
         <q-item-side right>
           <q-btn
               :class="$style.logout"

@@ -3,7 +3,7 @@
     <div class="card-content bg-white ">
       <q-field>
         <q-input
-          v-model="user.name"
+          v-model="user.firstname"
         />
       </q-field>
       <q-field>
@@ -23,10 +23,8 @@
 </template>
 
 <script>
-// import { required, email } from 'vuelidate/lib/validators'
 import actionTypes from '../../store/actionTypes'
-// import { mapGetters } from 'vuex'
-// Todo comprendre pkoi le bouton s'allume alors que toutes les conditions ne sont pas remplies.
+
 export default {
   data () {
     return {
