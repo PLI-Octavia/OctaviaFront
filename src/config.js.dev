@@ -1,3 +1,4 @@
+// cp le fichier en config.js et changer votre url
 const config = {
   baseURL: 'https://octavia.local.heffiros.net/api'
 }
