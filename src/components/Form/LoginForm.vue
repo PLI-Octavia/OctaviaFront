@@ -24,6 +24,7 @@
             size="lg"
             full-widht
             @click="submit"
+            @keyup.enter="submit"
           >
           Se connecter
           </q-btn>
@@ -38,6 +39,7 @@ import { required, email } from 'vuelidate/lib/validators'
 import actionTypes from '../../store/actionTypes'
 
 export default {
+  name: 'LoginForm',
   data () {
     return {
       loginForm: {

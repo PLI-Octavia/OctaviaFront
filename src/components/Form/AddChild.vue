@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     async submit () {
-      console.log(this.childForm)
       if (this.childForm.schoolclass_id !== 0) {
         await this.$store.dispatch(actionTypes.USER_ADDCHILD, this.childForm)
       } else {

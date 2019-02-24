@@ -1,8 +1,6 @@
 import * as $http from 'axios'
 import mutationTypes from '../mutationTypes'
 import actionTypes from '../actionTypes'
-// import { Notify } from 'quasar'
-// import Vue from 'vue'
 
 const state = {
   games: [],
@@ -20,7 +18,7 @@ const getters = {
       return state.games.filter(game => game.topic.id_topic === filter)
     }
   },
-  getGameById: (state) => {
+  getSelectedGame: (state) => {
     return {...state.game}
   }
 }

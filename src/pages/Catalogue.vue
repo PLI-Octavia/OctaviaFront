@@ -11,45 +11,26 @@
   </div>
   <div>
     <q-card v-for="game in this.games" :key="game.id" :class="$style.card" inline class="q-ma-sm">
-      <q-card-media overlay-position="top">
-        <img :src="'http://www.facetheforce.today/random/200?r=' + game.id"
-        @click="gameDetail(game.id)">
-
-        <q-card-title slot="overlay">
-          {{ game.name }}
-          <span slot="subtitle">{{ game.topic.name }}</span>
-        </q-card-title>
-      </q-card-media>
+      <game-card :game="game" />
     </q-card>
-
-    <!-- <q-card v-for="game in this.games" :key="game.id" :class="$style.card" inline color="secondary" dark class="q-ma-sm">
-      <q-card-title>
-        {{ game.name }}
-        <span slot="subtitle">{{ game.topic.name }}</span>
-      </q-card-title>
-      <q-card-main>
-        {{ game.description }}
-      </q-card-main>
-      <q-card-separator />
-      <q-card-actions>
-        <q-btn flat>Voir</q-btn>
-        <q-btn flat>Activer</q-btn>
-      </q-card-actions>
-    </q-card> -->
   </div>
 </div>
 </template>
 
 <script>
-// import actionTypes from '../store/actionTypes'
-
 import { mapGetters } from 'vuex'
+import GameCard from '../components/Card/GameCard'
+
 export default {
+  name: 'Catalogue',
   data () {
     return {
       select: 0,
       games: null
     }
+  },
+  components: {
+    GameCard
   },
   computed: {
     ...mapGetters(['getTopics'])
@@ -60,9 +41,6 @@ export default {
   methods: {
     async getFilterGame () {
       this.games = this.$store.getters.getGamesFilterByTopic(this.select)
-    },
-    gameDetail (gameId) {
-      this.$router.push({ path: '/game/detail/' + gameId })
     }
   }
 }

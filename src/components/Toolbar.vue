@@ -9,10 +9,7 @@
 </template>
 <script type="text/javascript">
 export default {
-  computed: {
-  },
-  methods: {
-  }
+  name: 'Toolbar'
 }
 </script>
 

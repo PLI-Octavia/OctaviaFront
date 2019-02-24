@@ -2,7 +2,6 @@ import Axios, * as $http from 'axios'
 import mutationTypes from '../mutationTypes'
 import actionTypes from '../actionTypes'
 import { Notify, Cookies } from 'quasar'
-// import Vue from 'vue'
 
 const state = {
   auth_user: {
@@ -89,7 +88,10 @@ const actions = {
       const token = 'Bearer ' + response.data.success.token
       await store.dispatch(actionTypes.FETCH_USER, token)
     } catch (e) {
-      console.log(e)
+      Notify.create({
+        message: e,
+        type: 'negative'
+      })
     }
   },
   async [actionTypes.USER_ADDCHILD] (store, child) {
@@ -115,7 +117,10 @@ const actions = {
       await $http.post('/user/' + user.id, user)
       await store.commit(mutationTypes.SET_AUTHUSER, {token: user.token, user: user})
     } catch (e) {
-      console.log(e)
+      Notify.create({
+        message: e,
+        type: 'negative'
+      })
     }
   }
 }

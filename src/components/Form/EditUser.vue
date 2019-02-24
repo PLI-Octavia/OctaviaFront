@@ -29,12 +29,12 @@
 import actionTypes from '../../store/actionTypes'
 
 export default {
+  name: 'EditUser',
   data () {
     return {
       user: null
     }
   },
-  name: 'EditUser',
   created () {
     this.user = this.$store.getters.currentUser
   },

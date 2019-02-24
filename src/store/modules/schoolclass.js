@@ -1,8 +1,6 @@
 import * as $http from 'axios'
 import mutationTypes from '../mutationTypes'
 import actionTypes from '../actionTypes'
-// import { Notify } from 'quasar'
-// import Vue from 'vue'
 
 const state = {
   schoolClass: []

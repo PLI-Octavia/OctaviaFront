@@ -8,8 +8,9 @@
 
 <script>
 import RegisterForm from '../components/Form/RegisterForm'
-// Todo comprendre pkoi le bouton s'allume alors que toutes les conditions ne sont pas remplies.
+
 export default {
+  name: 'Register',
   components: {
     RegisterForm
   }
