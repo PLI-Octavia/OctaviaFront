@@ -73,6 +73,8 @@ export default {
   width 300px
   height 300px
   position relative
+  cursor pointer
 .filter
-  width 100%
+  width 30%
+  padding 15px
 </style>

@@ -1,23 +1,26 @@
 <template>
-  <div>
-    <div class="card-content bg-white ">
-      <q-field>
-        <q-input
-          v-model="user.firstname"
-        />
-      </q-field>
-      <q-field>
-        <q-input
-          v-model="user.email"
-        />
-      </q-field>
-      <q-btn
-        class="submit"
-        color="primary"
-        size="lg"
-        @click="submit">
-        Submit
-      </q-btn>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card-content bg-white ">
+        <q-field>
+          <q-input
+            v-model="user.firstname"
+          />
+        </q-field>
+        <q-field>
+          <q-input
+            v-model="user.email"
+          />
+        </q-field>
+        <br>
+        <q-btn
+          class="submit"
+          color="primary"
+          size="lg"
+          @click="submit">
+          Submit
+        </q-btn>
+      </div>
     </div>
   </div>
 </template>
