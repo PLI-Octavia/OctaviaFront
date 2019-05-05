@@ -13,6 +13,7 @@
           <div :class="$style.button">
             <q-btn @click="dashboard">Retour</q-btn>
             <q-btn>Activer</q-btn>
+            <q-btn @click="launch">Tester</q-btn>
           </div>
         </div>
       </div>
@@ -26,6 +27,7 @@
 .button
     margin-top 3%
 </style>
+
 <script>
 export default {
   name: 'GameDetail',
@@ -40,6 +42,9 @@ export default {
   methods: {
     dashboard () {
       this.$router.push({ path: '/dashboard' })
+    },
+    launch () {
+      this.$router.push({ path: '/game/' + this.game.id })
     }
   }
 }

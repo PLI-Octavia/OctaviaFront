@@ -20,6 +20,12 @@ const getters = {
   },
   getSelectedGame: (state) => {
     return {...state.game}
+  },
+  getGameById: (state) => (gameId) => {
+    if (!gameId || gameId <= 0) {
+      return null
+    }
+    return state.games.find(g => g.id === gameId)
   }
 }
 
