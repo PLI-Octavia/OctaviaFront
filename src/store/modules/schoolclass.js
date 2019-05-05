@@ -13,7 +13,7 @@ const getters = {
     allClass.forEach(function (schollClass) {
       schoolClasses.push({'value': schollClass.id, 'label': schollClass.class_name})
     })
-    schoolClasses.push({'value': 0, 'label': 'Dans quelle classe est votre enfant'})
+    schoolClasses.push({'value': 0, 'label': 'choisir'})
     return schoolClasses.sort((p1, p2) => p1.value > p2.value ? 1 : -1)
   }
 }
