@@ -121,10 +121,14 @@ const actions = {
       await store.commit(mutationTypes.SET_AUTHUSER, {token: user.token, user: user})
     } catch (e) {
       Notify.create({
-        message: e,
+        message: "Nous n'avons pas pu mettre à jour vos informations",
         type: 'negative'
       })
     }
+    Notify.create({
+      message: 'Profil mis à jour',
+      type: 'positive'
+    })
   },
   async [actionTypes.AVATAR_UPDATE] (store, image) {
     try {
@@ -136,6 +140,10 @@ const actions = {
         type: 'negative'
       })
     }
+    Notify.create({
+      message: 'Avatar mis à jour',
+      type: 'positive'
+    })
   }
 }
 

@@ -48,7 +48,7 @@
               error-label="We need a valid email"
               >
               <q-input
-                v-model="user.name"
+                v-model="user.lastname"
               />
             </q-field>
             <q-field
@@ -63,7 +63,7 @@
             <q-card-actions>
               <q-btn
                 flat
-                color="primary"
+                :class="$style.update"
                 label="Modifier"
                 @click="submit"
               />
@@ -125,6 +125,16 @@ export default {
     color white
     padding 10px
     cursor pointer
+  .update
+    background-color #673AB7
+    display block
+    text-align center
+    color white
+    padding 10px
+    cursor pointer
+    width 100%
+    border-radius 0px
+    margin-top 10px
   .avatar_img
     width 150px
     height 150px
@@ -132,5 +142,5 @@ export default {
     margin-left 35%
     margin-bottom 50px
   .infoForm
-    margin-top 5%
+    margin-top 20px
 </style>
