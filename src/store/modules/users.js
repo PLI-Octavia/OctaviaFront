@@ -52,6 +52,9 @@ const mutations = {
     state.isLogged = false
     Cookies.remove('isLogged')
     this.$router.push({ path: '/login' })
+  },
+  [mutationTypes.SET_USER_AVATAR] (state, user) {
+    state.auth_user.avatar_source = user.user.avatar_source
   }
 }
 
@@ -119,6 +122,17 @@ const actions = {
     } catch (e) {
       Notify.create({
         message: e,
+        type: 'negative'
+      })
+    }
+  },
+  async [actionTypes.AVATAR_UPDATE] (store, image) {
+    try {
+      const result = await $http.post('/user/' + state.auth_user.id + '/avatar', image)
+      store.commit(mutationTypes.SET_USER_AVATAR, { user: result.data.success })
+    } catch (e) {
+      Notify.create({
+        message: "Nous n'avons pas pu mettre votre avatar à jour",
         type: 'negative'
       })
     }
