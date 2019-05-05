@@ -1,33 +1,57 @@
 <template>
-  <div class="row">
+  <div class="row cardform">
     <div class="col-md-6 offset-md-3">
-      <div class="card-content bg-white ">
-        <q-field>
-          <q-input
-            v-model="user.firstname"
-          />
-        </q-field>
-        <q-field>
-          <q-input
-            v-model="user.email"
-          />
-        </q-field>
-        <br>
-        <q-btn
-          class="submit"
-          color="primary"
-          size="lg"
-          @click="submit">
-          Submit
-        </q-btn>
-      </div>
+      <q-card>
+          <q-card-title>
+            Vos informations
+          </q-card-title>
+          <q-card-separator />
+        <q-card-main>
+          <div class="card-content bg-white ">
+            <q-field
+              label="Votre prénom"
+              :error="mailHasError"
+              error-label="We need a valid email"
+              >
+              <q-input
+                v-model="user.firstname"
+              />
+            </q-field>
+            <q-field
+              label="Votre Nom"
+              :error="mailHasError"
+              error-label="We need a valid email"
+              >
+              <q-input
+                v-model="user.name"
+              />
+            </q-field>
+            <q-field
+              label="Email"
+              :error="mailHasError"
+              error-label="We need a valid email"
+              >
+              <q-input
+                v-model="user.email"
+              />
+            </q-field>
+            <q-card-separator />
+            <q-card-actions>
+              <q-btn
+                flat
+                color="primary"
+                label="Modifier"
+                @click="submit"
+              />
+            </q-card-actions>
+          </div>
+        </q-card-main>
+      </q-card>
     </div>
   </div>
 </template>
-
 <script>
 import actionTypes from '../../store/actionTypes'
-
 export default {
   name: 'EditUser',
   data () {
@@ -46,3 +70,7 @@ export default {
   }
 }
 </script>
+<style lang="stylus">
+  .cardform
+    margin-top 55px
+</style>
