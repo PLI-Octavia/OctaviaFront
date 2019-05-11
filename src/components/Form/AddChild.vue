@@ -32,15 +32,15 @@
                 v-model="childForm.schoolclass_id"
                 float-label="Dans quelle classe est votre enfant*"
                 radio
-              :options="getSchoolClass"
+                :options="getSchoolClass"
               />
               </div>
               <q-card-separator />
               <q-card-actions>
                 <q-btn
                   flat
-                  color="primary"
                   label="Modifier"
+                  :class="$style.update"
                   @click="submit"
                   @enter="submit"
                 />
@@ -87,4 +87,17 @@ export default {
 <style lang="stylus">
   .cardform
     margin-top 5%
+</style>
+
+<style lang="stylus" module>
+  .update
+    background-color #673AB7
+    display block
+    text-align center
+    color white
+    padding 10px
+    cursor pointer
+    width 100%
+    border-radius 0px
+    margin-top 20px
 </style>
