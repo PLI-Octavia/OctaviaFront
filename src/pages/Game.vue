@@ -1,6 +1,6 @@
 <template>
   <div v-if="getActiveGame && getActiveGame.name !== null">
-    <unity :src="`${gameUrl + getActiveGame.name}/Build/${getActiveGame.name}.json`" width="1000" height="600" :unityLoader="`${gameUrl + getActiveGame.name}/Build/UnityLoader.js`" />
+    <unity :src="`${gameUrl + getActiveGame.name}/Build/${getActiveGame.name}.json`" width="1000" height="600" :unityLoader="`${gameUrl + getActiveGame.name}/Build/UnityLoader.js`" :hideFooter="true"/>
   </div>
 </template>
 
