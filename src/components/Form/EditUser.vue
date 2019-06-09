@@ -72,5 +72,5 @@ export default {
 </script>
 <style lang="stylus">
   .cardform
-    margin-top 55px
+    margin-top 5%
 </style>
