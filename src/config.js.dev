@@ -1,6 +1,7 @@
 // cp le fichier en config.js et changer votre url
 const config = {
   baseURL: 'https://octavia.local.heffiros.net/api'
+  gameURL: 'https://octavia.local.heffiros.net/storage/App/Games/'
 }
 
 export default config

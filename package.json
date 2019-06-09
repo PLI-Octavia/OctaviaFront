@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "vue-unity-webgl": "^1.2.0",
     "vuelidate": "^0.7.4"
   },
   "devDependencies": {
