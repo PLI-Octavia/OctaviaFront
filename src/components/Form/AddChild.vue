@@ -11,7 +11,6 @@
             <div class="card-content bg-white ">
               <q-field
                 label="Prénom"
-                :error="mailHasError"
                 error-label="We need a valid email"
                 >
                 <q-input
@@ -20,11 +19,10 @@
               </q-field>
               <q-field
                 label="Nom"
-                :error="mailHasError"
                 error-label="We need a valid email"
                 >
                 <q-input
-                v-model="childForm.name"
+                v-model="childForm.lastname"
                 />
               </q-field>
               <div>
@@ -39,7 +37,7 @@
               <q-card-actions>
                 <q-btn
                   flat
-                  label="Modifier"
+                  label="Valider"
                   :class="$style.update"
                   @click="submit"
                   @enter="submit"
@@ -66,8 +64,7 @@ export default {
         lastname: null,
         schoolclass_id: 0
       },
-      select: 0,
-      name: null
+      select: 0
     }
   },
   computed: {

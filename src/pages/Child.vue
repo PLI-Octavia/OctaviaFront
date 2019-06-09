@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-if="getchildren">
+    <div v-if="getchildren.length > 0">
       <q-card v-for="child in getchildren" :key="child.id" inline class="q-ma-sm">
-        <user-card />
+        <user-card :child="child"/>
       </q-card>
     </div>
 

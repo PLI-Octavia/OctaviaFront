@@ -8,6 +8,25 @@
 import Unity from 'vue-unity-webgl'
 import $config from '../config'
 
+window.gameManagement = {
+  _config: null,
+  getConfig: function () {
+    alert(this._config)
+    if (this._config) {
+      return this._config
+    }
+  },
+  quitGame: function () {
+    document.location.href = 'http://octavia-academy.com/'
+  },
+  load: function () {
+    alert('load')
+  },
+  setConfig: function (test) {
+    this._config = test
+  }
+}
+
 export default {
   name: 'Game',
   computed: {
@@ -20,6 +39,11 @@ export default {
   },
   beforeCreate () {
     this.gameUrl = $config.gameURL
+  },
+  async created () {
+    // fetch la bonne config pas oublier le await
+    await window.gameManagement.setConfig('toto')
+    await console.log(window.gameManagement.getConfig())
   }
 }
 </script>
