@@ -11,16 +11,12 @@ import $config from '../config'
 window.gameManagement = {
   _config: null,
   getConfig: function () {
-    alert(this._config)
     if (this._config) {
       return this._config
     }
   },
   quitGame: function () {
     document.location.href = 'http://octavia-academy.com/'
-  },
-  load: function () {
-    alert('load')
   },
   setConfig: function (test) {
     this._config = test
@@ -29,9 +25,16 @@ window.gameManagement = {
 
 export default {
   name: 'Game',
+  data () {
+    return {
+      gameId: 0,
+      templateId: 0,
+      childId: 0
+    }
+  },
   computed: {
     getActiveGame () {
-      return this.$store.getters.getGameById(Number.parseInt(this.$route.params.gameid))
+      return this.$store.getters.getGameById(this.gameId)
     }
   },
   components: {
@@ -41,9 +44,13 @@ export default {
     this.gameUrl = $config.gameURL
   },
   async created () {
+    this.templateId = Number.parseInt(this.$route.params.templateId)
+    this.childId = Number.parseInt(this.$route.params.childId)
+    this.gameId = Number.parseInt(this.$route.params.gameid)
     // fetch la bonne config pas oublier le await
-    await window.gameManagement.setConfig('toto')
-    await console.log(window.gameManagement.getConfig())
+    if (this.templateId !== 0) {
+      await window.gameManagement.setConfig(this.$store.getters.getTemplateById({gameId: this.$route.params.gameid, templateId: this.templateId}))
+    }
   }
 }
 </script>

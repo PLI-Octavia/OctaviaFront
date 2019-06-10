@@ -22,6 +22,13 @@ const getters = {
       return null
     }
     return state.games.find(g => g.id === gameId)
+  },
+  getTemplateById: (state) => (gameId, templateId) => {
+    const game = state.games.find(g => g.id === gameId)
+    if (game) {
+      return game.templates.find(t => t.id === templateId)
+    }
+    return null
   }
 }
 
