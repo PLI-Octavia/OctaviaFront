@@ -1,19 +1,19 @@
 <template>
     <div>
       <q-parallax>
-        <img slot="media" :src="'http://www.facetheforce.today/random/1600?r=' + game.id">
+        <img slot="media" :src="'http://www.facetheforce.today/random/1600?r=' + getActiveGame.id">
       </q-parallax>
-      <label>{{game.topic.topic}}</label>
+      <label>{{getActiveGame.topic.topic}}</label>
       <div class="container">
         <div class="text-center">
-          <h1 >{{game.name}}</h1>
+          <h1 >{{getActiveGame.name}}</h1>
           <div :class="$style.description">
-            {{game.description}}
+            {{getActiveGame.description}}
           </div>
           <div :class="$style.button">
             <q-btn @click="dashboard">Retour</q-btn>
             <q-btn>Activer</q-btn>
-            <q-btn @click="launch">Tester</q-btn>
+            <q-btn @click="launch">Jouer</q-btn>
           </div>
         </div>
       </div>
@@ -36,15 +36,18 @@ export default {
       game: null
     }
   },
-  created () {
-    this.game = this.$store.getters.getSelectedGame
+  computed: {
+    getActiveGame () {
+      return this.$store.getters.getGameById(Number.parseInt(this.$route.params.gameid))
+    }
   },
   methods: {
     dashboard () {
       this.$router.push({ path: '/dashboard' })
     },
     launch () {
-      this.$router.push({ path: '/game/' + this.game.id })
+      // Faire apparaitre une popup avec un select des enfants + choix de la conf
+      // this.$router.push({ path: '/game/' + this.getActiveGame.id })
     }
   }
 }

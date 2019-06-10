@@ -11,8 +11,6 @@
   </template>
 
 <script>
-import actionTypes from '../../store/actionTypes'
-
 export default {
   props: {
     game: {
@@ -21,7 +19,6 @@ export default {
   },
   methods: {
     async gameDetail (gameId) {
-      await this.$store.dispatch(actionTypes.GAME_DETAIL, gameId)
       this.$router.push({ path: '/game/detail/' + gameId })
     }
   }
