@@ -32,8 +32,9 @@
             </div>
           </div>
           <div v-else>
-            Le contenu de ce jeux n'est pas modifiable <q-btn @click="launch"> Jouer </q-btn>
+            Le contenu de ce jeux n'est pas modifiable !
           </div>
+          <q-btn @click="launch"> Jouer </q-btn>
         </div>
       </div>
   </div>

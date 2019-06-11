@@ -18,8 +18,8 @@ window.gameManagement = {
   quitGame: function () {
     document.location.href = 'http://octavia-academy.com/'
   },
-  setConfig: function (test) {
-    this._config = test
+  setConfig: function (data) {
+    this._config = data
   }
 }
 
@@ -49,8 +49,12 @@ export default {
     this.gameId = Number.parseInt(this.$route.params.gameid)
     // fetch la bonne config pas oublier le await
     if (this.templateId !== 0) {
-      await window.gameManagement.setConfig(this.$store.getters.getTemplateById({gameId: this.$route.params.gameid, templateId: this.templateId}))
+      const template = this.$store.getters.getTemplateById({gameId: this.gameId, templateId: this.templateId})
+      if (template) {
+        await window.gameManagement.setConfig(template.datas)
+      }
     }
+    alert(window.gameManagement.getConfig())
   }
 }
 </script>
