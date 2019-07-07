@@ -54,7 +54,6 @@ export default {
         await window.gameManagement.setConfig(template.datas)
       }
     }
-    alert(window.gameManagement.getConfig())
   }
 }
 </script>
