@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import users from './modules/users'
 import game from './modules/game'
 import topic from './modules/topic'
+import stats from './modules/stats'
 import schoolclass from './modules/schoolclass'
 
 Vue.use(Vuex)
@@ -18,7 +19,8 @@ const store = new Vuex.Store({
     users,
     game,
     topic,
-    schoolclass
+    schoolclass,
+    stats
   }
 })
 export default store

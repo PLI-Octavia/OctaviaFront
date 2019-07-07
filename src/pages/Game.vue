@@ -7,9 +7,14 @@
 <script>
 import Unity from 'vue-unity-webgl'
 import $config from '../config'
+import actionTypes from 'src/store/actionTypes'
 
 window.gameManagement = {
   _config: null,
+  context: null,
+  gameId: null,
+  templateId: null,
+  childId: null,
   getConfig: function () {
     if (this._config) {
       return this._config
@@ -20,6 +25,9 @@ window.gameManagement = {
   },
   setConfig: function (data) {
     this._config = data
+  },
+  sendScore: function (score) {
+    this.context.$store.dispatch(actionTypes.SEND_GAME_SCORE, { score: score, gameId: this.gameId, childId: this.childId, templateId: this.templateId })
   }
 }
 
@@ -51,9 +59,13 @@ export default {
     if (this.templateId !== 0) {
       const template = this.$store.getters.getTemplateById({gameId: this.gameId, templateId: this.templateId})
       if (template) {
+        window.gameManagement.templateId = this.templateId
         await window.gameManagement.setConfig(template.datas)
       }
     }
+    window.gameManagement.context = this
+    window.gameManagement.gameId = this.gameId
+    window.gameManagement.childId = this.childId
   }
 }
 </script>
